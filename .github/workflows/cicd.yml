@@ -76,9 +76,5 @@ jobs:
           # Apply Kubernetes deployment
           kubectl apply -f kubernates/deployment.yml
 
-      - name: Show Application URL
-        run: |
-          # Get the Minikube URL for the service
-          APP_URL=$(minikube service adu-ecommerce --url)
-          echo "Application URL: $APP_URL"
+   
 
