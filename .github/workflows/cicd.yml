@@ -23,33 +23,35 @@ jobs:
         run: |
           docker build -t adu-ecommerce-app:latest .
 
-      # 3. Run SonarQube scan
+      # 3. Run SonarQube scan (Dockerized)
       - name: SonarQube Scan
         run: |
-          sonar-scanner \
+          docker run --rm \
+            -v $(pwd):/usr/src \
+            -w /usr/src \
+            sonarsource/sonar-scanner-cli:latest \
             -Dsonar.projectKey=adu-ecommerce-app \
             -Dsonar.sources=. \
-            -Dsonar.host.url=http://localhost:9000 \
-            -Dsonar.login=adminadmin \
-            -Dsonar.password='75382231Ayuk$'
-        # Using hardcoded SonarQube username and password
+            -Dsonar.host.url=http://host.docker.internal:9000 \
+            -Dsonar.login=sqp_d34c515f1f5daaf87493db2764a2f1a946894a57
+        # Using hardcoded SonarQube token
 
       # 4. Login to Docker Hub (hardcoded credentials)
       - name: Docker Hub Login
         run: |
           echo "Logging in to Docker Hub"
-          echo "75382231Ay$" | docker login -u "obidocker380" --password-stdin
+          echo "75382231Ayuk$" | docker login -u "obidocker380" --password-stdin
 
       # 5. Push Docker image to Docker Hub
       - name: Push Docker Image
         run: |
-          docker tag adu-ecommerce-app:latest adminadmin/adu-ecommerce-app:latest
-          docker push adminadmin/adu-ecommerce-app:latest
+          docker tag adu-ecommerce-app:latest obidocker380/adu-ecommerce-app:latest
+          docker push obidocker380/adu-ecommerce-app:latest
 
       # 6. Deploy Docker image to Minikube
       - name: Deploy to Minikube
         run: |
-          # Set Docker environment to Minikube
+          # Use Minikube Docker daemon
           eval $(minikube -p minikube docker-env)
           # Apply Kubernetes deployment
           kubectl apply -f kubernates/deployment.yml
