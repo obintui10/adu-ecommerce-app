@@ -78,6 +78,7 @@ jobs:
 
       - name: Show Application URL
         run: |
-          MINIKUBE_IP=$(minikube ip)
-          APP_PORT=80
-          echo "Application URL: http://$MINIKUBE_IP:$APP_PORT"
+          # Get the Minikube URL for the service
+          APP_URL=$(minikube service adu-ecommerce --url)
+          echo "Application URL: $APP_URL"
+
