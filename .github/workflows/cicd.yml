@@ -30,17 +30,17 @@ jobs:
             -v $(pwd):/usr/src \
             -w /usr/src \
             sonarsource/sonar-scanner-cli:latest \
-            -Dsonar.projectKey=adu-ecommerce-app \
+            -Dsonar.projectKey=cicd \
             -Dsonar.sources=. \
             -Dsonar.host.url=http://host.docker.internal:9000 \
-            -Dsonar.login=sqp_d34c515f1f5daaf87493db2764a2f1a946894a57
+            -Dsonar.login=sqp_3365dc2a0df5afcf9bbfaf478a0acb978dd687c9
         # Using hardcoded SonarQube token
 
       # 4. Login to Docker Hub (hardcoded credentials)
       - name: Docker Hub Login
         run: |
           echo "Logging in to Docker Hub"
-          echo "75382231Ayuk$" | docker login -u "obidocker380" --password-stdin
+          echo "75382231Ay$" | docker login -u "obidocker380" --password-stdin
 
       # 5. Push Docker image to Docker Hub
       - name: Push Docker Image
