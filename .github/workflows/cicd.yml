@@ -1,36 +1,55 @@
-# This is a basic workflow to help you get started with Actions
+name: CI/CD Pipeline
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  build-scan-deploy:
+    # Run on self-hosted macOS runner
+    runs-on: [self-hosted, macOS, x64]
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      # 1. Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # 2. Build Docker image
+      - name: Build Docker Image
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          docker build -t adu-ecommerce-app:latest .
+
+      # 3. Run SonarQube scan
+      - name: SonarQube Scan
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=adu-ecommerce-app \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=http://localhost:9000 \
+            -Dsonar.login=adminadmin \
+            -Dsonar.password='75382231Ayuk$'
+        # Using hardcoded SonarQube username and password
+
+      # 4. Login to Docker Hub (hardcoded credentials)
+      - name: Docker Hub Login
+        run: |
+          echo "Logging in to Docker Hub"
+          echo "75382231Ay$" | docker login -u "obidocker380" --password-stdin
+
+      # 5. Push Docker image to Docker Hub
+      - name: Push Docker Image
+        run: |
+          docker tag adu-ecommerce-app:latest adminadmin/adu-ecommerce-app:latest
+          docker push adminadmin/adu-ecommerce-app:latest
+
+      # 6. Deploy Docker image to Minikube
+      - name: Deploy to Minikube
+        run: |
+          # Set Docker environment to Minikube
+          eval $(minikube -p minikube docker-env)
+          # Apply Kubernetes deployment
+          kubectl apply -f kubernates/deployment.yml
