@@ -9,31 +9,23 @@ on:
       - main
 
 jobs:
-  # -------------------------
-  # 1. Checkout & Build Docker
-  # -------------------------
-  build-image:
+  # ---------------------------------------------
+  # 1. Build, Scan with SonarQube, and Push Image
+  # ---------------------------------------------
+  build-scan-push:
     runs-on: [self-hosted, macOS, x64]
 
     steps:
+      # Checkout code
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      # Build Docker image
       - name: Build Docker Image
         run: |
           docker build -t adu-ecommerce-app:latest .
 
-  # -------------------------
-  # 2. SonarQube Scan
-  # -------------------------
-  sonar-scan:
-    runs-on: [self-hosted, macOS, x64]
-    needs: build-image
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
+      # SonarQube scan (Dockerized)
       - name: SonarQube Scan
         run: |
           docker run --rm \
@@ -44,33 +36,28 @@ jobs:
             -Dsonar.sources=. \
             -Dsonar.host.url=http://host.docker.internal:9000 \
             -Dsonar.login=sqp_3365dc2a0df5afcf9bbfaf478a0acb978dd687c9
+        # Using hardcoded SonarQube token
 
-  # -------------------------
-  # 3. Push Docker Image
-  # -------------------------
-  push-image:
-    runs-on: [self-hosted, macOS, x64]
-    needs: build-image
-
-    steps:
+      # Login to Docker Hub (hardcoded credentials)
       - name: Docker Hub Login
         run: |
-          echo "Logging in to Docker Hub"
           echo "75382231Ay$" | docker login -u "obidocker380" --password-stdin
 
+      # Push Docker image
       - name: Push Docker Image
         run: |
           docker tag adu-ecommerce-app:latest obidocker380/adu-ecommerce-app:latest
           docker push obidocker380/adu-ecommerce-app:latest
 
-  # -------------------------
-  # 4. Deploy to Minikube
-  # -------------------------
+  # ---------------------------------------------
+  # 2. Deploy to Minikube (depends on first job)
+  # ---------------------------------------------
   deploy-minikube:
     runs-on: [self-hosted, macOS, x64]
-    needs: push-image
+    needs: build-scan-push
 
     steps:
+      # Deploy to Minikube
       - name: Deploy to Minikube
         run: |
           # Use Minikube Docker daemon
@@ -78,8 +65,9 @@ jobs:
           # Apply Kubernetes deployment
           kubectl apply -f kubernates/deployment.yml
 
+      # Show application URL
       - name: Get Application URL
         run: |
           MINIKUBE_IP=$(minikube ip)
-          APP_PORT=80   # Change if your deployment uses a different port
+          APP_PORT=80
           echo "Application is accessible at: http://$MINIKUBE_IP:$APP_PORT"
