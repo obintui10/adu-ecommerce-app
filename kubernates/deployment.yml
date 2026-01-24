@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: adu-ecommerce
-        image: adu-ecommerce-app:latest
+        image: obidocker380/adu-ecommerce-app:latestc
         ports:
         - containerPort: 80
 ---
