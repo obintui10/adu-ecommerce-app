@@ -76,17 +76,18 @@ adu-ecommerce-app/
 - Add unit tests with Pytest.
 - Deploy to cloud (AWS/Azure) with CI/CD.
 ```
+
 ## 📐 Mermaid diagram code
 ```mermaid
 flowchart TD
-    A[Browser<br>(User submits subscription)] --> B[Flask App<br>(app.py)]
-    B --> C[MongoDB Atlas<br>(subscribers collection)]
-
-    B:::flask
-    C:::db
+    A[Browser (User submits subscription)] --> B[Flask App (app.py)]
+    B --> C[MongoDB Atlas (subscribers collection)]
 
     classDef flask fill=#f9f,stroke=#333,stroke-width=1px;
     classDef db fill=#9f9,stroke=#333,stroke-width=1px;
+
+    class B flask
+    class C db
 
 
   
