@@ -72,6 +72,13 @@ docker run -p 80:80 adu-ecommerce-app
 - If new, inserts into MongoDB Atlas.
 - Success or error message displayed.
 
+##  🌱 Future Work
+- Add login/authentication system.
+- Expand to product catalog pages.
+- Integrate payment gateway.
+- Add unit tests with Pytest.
+- Deploy to cloud (AWS/Azure) with CI/CD.
+
 ```
 
 ## 🗂 Mermaid Diagram
@@ -86,11 +93,3 @@ flowchart TD
 
     class B flask
     class C db
-```
-##  🌱 Future Work
-- Add login/authentication system.
-- Expand to product catalog pages.
-- Integrate payment gateway.
-- Add unit tests with Pytest.
-- Deploy to cloud (AWS/Azure) with CI/CD.
-
