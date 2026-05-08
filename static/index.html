@@ -1,34 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ADU Ecommerce App</title>
-    <link rel="stylesheet" href="static/reset.css">
-    <link rel="stylesheet" href="static/theme.css">
-    <link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Logo -->
-        <img src="static/images/logo.png" alt="App Logo" width="120">
-        <h1>Welcome to ADU Ecommerce</h1>
+<div class="container">
+  <!-- Logo -->
+  <img src="static/images/logo.png" alt="App Logo" width="120">
+  <h1>Welcome to ADU Ecommerce</h1>
 
-        <!-- Login Form -->
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+  <!-- Login Section -->
+  <section class="login-section">
+    <form>
+      <label for="username">Username</label>
+      <input id="username" type="text" placeholder="Enter username" required>
+      
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Enter password" required>
+      
+      <button type="submit" class="btn-primary">Login</button>
+    </form>
+  </section>
 
-        <!-- Product Showcase -->
-        <div class="product-card">
-            <img src="static/images/product1.png" alt="Sneakers Product" width="250">
-            <h2>Modern Sneakers</h2>
-            <p>Comfortable athletic sneakers with stylish design.</p>
-            <button>Buy Now</button>
-        </div>
+  <!-- Product Section -->
+  <section class="products">
+    <div class="product-card">
+      <img src="static/images/product1.png" alt="Sneakers on sale - 30% off" width="250">
+      <h2>Modern Sneakers</h2>
+      <p>Comfortable athletic sneakers with stylish design.</p>
+      <button class="btn-buy">Buy Now</button>
     </div>
-
-    <script src="static/app.js"></script>
-</body>
-</html>
+    <!-- Add more product cards here -->
+  </section>
+</div>
