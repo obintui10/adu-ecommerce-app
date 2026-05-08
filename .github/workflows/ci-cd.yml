@@ -18,7 +18,7 @@ jobs:
       image: adu-ecommerce-app:latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build Docker Image
         run: |
@@ -26,14 +26,29 @@ jobs:
           echo "image=adu-ecommerce-app:latest" >> $GITHUB_OUTPUT
 
   # -------------------------------
-  # 2. SonarQube Scan
+  # 2. Run Tests
   # -------------------------------
-  sonar-scan:
+  test-app:
     runs-on: [self-hosted, macOS, x64]
     needs: build-image
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Run Unit Tests
+        run: |
+          npm install
+          npm test
+
+  # -------------------------------
+  # 3. SonarQube Scan
+  # -------------------------------
+  sonar-scan:
+    runs-on: [self-hosted, macOS, x64]
+    needs: test-app
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Run SonarQube Scan
         run: |
@@ -43,11 +58,11 @@ jobs:
             sonarsource/sonar-scanner-cli:latest \
             -Dsonar.projectKey=cicd \
             -Dsonar.sources=. \
-            -Dsonar.host.url=http://host.docker.internal:9000 \
-            -Dsonar.login=sqp_3365dc2a0df5afcf9bbfaf478a0acb978dd687c9
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
   # -------------------------------
-  # 3. Push Docker Image to Docker Hub
+  # 4. Push Docker Image to Docker Hub
   # -------------------------------
   push-image:
     runs-on: [self-hosted, macOS, x64]
@@ -55,7 +70,7 @@ jobs:
     steps:
       - name: Docker Hub Login
         run: |
-          echo "75382231Ay$" | docker login -u "obidocker380" --password-stdin
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
 
       - name: Push Docker Image
         run: |
@@ -63,7 +78,7 @@ jobs:
           docker push obidocker380/adu-ecommerce-app:latest
 
   # -------------------------------
-  # 4. Deploy to Minikube
+  # 5. Deploy to Minikube
   # -------------------------------
   deploy-minikube:
     runs-on: [self-hosted, macOS, x64]
@@ -73,8 +88,5 @@ jobs:
         run: |
           # Use Minikube Docker daemon
           eval $(minikube -p minikube docker-env)
-          # Apply Kubernetes deployment
-          kubectl apply -f kubernates/deployment.yml
-
-   
-
+          # Apply Kubernetes deployment (correct folder spelling)
+          kubectl apply -f kubernetes/deployment.yml
