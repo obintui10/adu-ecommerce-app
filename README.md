@@ -87,8 +87,8 @@ graph TD
     A[Browser (User submits subscription)] --> B[Flask App (app.py)]
     B --> C[MongoDB Atlas (subscribers collection)]
 
-    classDef flask fill:#f9f,stroke:#333,stroke-width:1px
-    classDef db fill:#9f9,stroke:#333,stroke-width:1px
+    classDef flask fill:#f9f,stroke:#333,stroke-width:1px;
+    classDef db fill:#9f9,stroke:#333,stroke-width:1px;
 
     class B flask
     class C db
