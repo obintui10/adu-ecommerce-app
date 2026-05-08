@@ -34,6 +34,20 @@ adu-ecommerce-app/
 - PyMongo → Python driver for MongoDB
 - Docker → containerized deployment
 - Gunicorn → production WSGI server
+
+##  🔄 Workflow
+- User enters name + email in form.
+- Flask validates and checks duplicates.
+- If new, inserts into MongoDB Atlas.
+- Success or error message displayed.
+
+##  🌱 Future Work
+- Add login/authentication system.
+- Expand to product catalog pages.
+- Integrate payment gateway.
+- Add unit tests with Pytest.
+- Deploy to cloud (AWS/Azure) with CI/CD.
+
 ```
  ## 📐 Box‑Style ASCII Architecture Diagram
  +-------------------+
@@ -63,19 +77,6 @@ adu-ecommerce-app/
 | - Prevents dupes  |
 +-------------------+
 ```
-##  🔄 Workflow
-- User enters name + email in form.
-- Flask validates and checks duplicates.
-- If new, inserts into MongoDB Atlas.
-- Success or error message displayed.
-
-##  🌱 Future Work
-- Add login/authentication system.
-- Expand to product catalog pages.
-- Integrate payment gateway.
-- Add unit tests with Pytest.
-- Deploy to cloud (AWS/Azure) with CI/CD.
-```
 
 ## 🗂 Architecture Diagram
 
@@ -89,6 +90,5 @@ flowchart TD
 
     class B flask
     class C db
-
 
   
