@@ -49,8 +49,9 @@ docker run -p 80:80 adu-ecommerce-app
 - Add unit tests with Pytest.
 - Deploy to cloud (AWS/Azure) with CI/CD.
 
-```
+
  ## 📐 Box‑Style ASCII Architecture Diagram
+``bash
  +-------------------+
 |     Browser       |
 |  (User submits    |
