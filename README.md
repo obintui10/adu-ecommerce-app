@@ -29,8 +29,7 @@ docker build -t adu-ecommerce-app .
 
 # Run container
 docker run -p 80:80 adu-ecommerce-app
-
-
+```
 
 ## 🛠️ Tech Stack
 - Flask → lightweight Python web framework
