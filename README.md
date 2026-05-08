@@ -62,7 +62,7 @@ adu-ecommerce-app/
 | - Stores email    |
 | - Prevents dupes  |
 +-------------------+
-
+```
 ##  🔄 Workflow
 - User enters name + email in form.
 - Flask validates and checks duplicates.
