@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: adu-ecommerce-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # Example cloud-specific annotations:
+    # For AWS ALB:
+    # alb.ingress.kubernetes.io/scheme: internet-facing
+    # For Azure Application Gateway:
+    # kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  rules:
+  - host: adu-ecommerce.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: adu-ecommerce-app
+            port:
+              number: 80
