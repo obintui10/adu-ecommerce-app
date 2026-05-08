@@ -7,7 +7,7 @@
 A simple Flask + MongoDB Atlas application that allows users to subscribe with their name and email. Built with containerization in mind using Docker, and structured for scalability and recruiter visibility.
 
 ## 🗂️ Project Structure
-```bash
+```text
 adu-ecommerce-app/
 │── app.py              # Flask app entry point
 │── requirements.txt    # Dependencies
