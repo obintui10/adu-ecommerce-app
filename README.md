@@ -79,8 +79,6 @@ docker run -p 80:80 adu-ecommerce-app
 - Add unit tests with Pytest.
 - Deploy to cloud (AWS/Azure) with CI/CD.
 
-```
-
 ## 🗂 Mermaid Diagram
 
 ```mermaid
