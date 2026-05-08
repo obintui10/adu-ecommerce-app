@@ -29,18 +29,7 @@ docker build -t adu-ecommerce-app .
 # Run container
 docker run -p 80:80 adu-ecommerce-app
 
-## 🛠️ Tech Stack
-- Flask → lightweight Python web framework
-- MongoDB Atlas → cloud database for subscriber storage
-- PyMongo → Python driver for MongoDB
-- Docker → containerized deployment
-- Gunicorn → production WSGI server
 
-##  🔄 Workflow
-- User enters name + email in form.
-- Flask validates and checks duplicates.
-- If new, inserts into MongoDB Atlas.
-- Success or error message displayed.
 
 
  ## 📐 Box‑Style ASCII Architecture Diagram
@@ -92,4 +81,16 @@ flowchart TD
 - Integrate payment gateway.
 - Add unit tests with Pytest.
 - Deploy to cloud (AWS/Azure) with CI/CD.
-  
+
+  ## 🛠️ Tech Stack
+- Flask → lightweight Python web framework
+- MongoDB Atlas → cloud database for subscriber storage
+- PyMongo → Python driver for MongoDB
+- Docker → containerized deployment
+- Gunicorn → production WSGI server
+
+##  🔄 Workflow
+- User enters name + email in form.
+- Flask validates and checks duplicates.
+- If new, inserts into MongoDB Atlas.
+- Success or error message displayed.
