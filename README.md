@@ -84,7 +84,7 @@ docker run -p 80:80 adu-ecommerce-app
 🗂 Mermaid Diagram
 ```mermaid
 flowchart TD
-    A[Browser User submits subscription] --> B[Flask App app.py]
+    A[Browser User submits subscription] --> B[Flask App .py]
     B --> C[(MongoDB Atlas subscribers collection)]
 
     classDef flask fill:#f9f,stroke:#333,stroke-width:1px
