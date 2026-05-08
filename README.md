@@ -18,7 +18,6 @@ adu-ecommerce-app/
 │   └── style.css       # Styling
 
 ## 🚀 Quickstart
-```bash
 # Clone the repo
 git clone https://github.com/yourusername/adu-ecommerce-app.git
 cd adu-ecommerce-app
