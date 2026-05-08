@@ -30,9 +30,7 @@ docker build -t adu-ecommerce-app .
 docker run -p 80:80 adu-ecommerce-app
 
 
-
-
- ## 📐 Box‑Style ASCII Architecture Diagram
+ ## 📐 Architecture Diagram
 ``bash
  +-------------------+
 |     Browser       |
@@ -62,7 +60,7 @@ docker run -p 80:80 adu-ecommerce-app
 +-------------------+
 ```
 
-## 🗂 Architecture Diagram
+## 🗂 Mermaid Diagram
 
 ```mermaid
 flowchart TD
