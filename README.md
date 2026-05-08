@@ -6,8 +6,20 @@ A simple Flask + MongoDB Atlas application that allows users to subscribe with t
 ![MongoDB Atlas](https://img.shields.io/badge/mongoDB-Atlas-green)
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
 
+## 🗂️ Project Structure
+``bash
+adu-ecommerce-app/
+│── app.py              # Flask app entry point
+│── requirements.txt    # Dependencies
+│── Dockerfile          # Container setup
+│── templates/
+│   └── index.html      # Subscription form template
+│── static/
+│   └── style.css       # Styling
+```
 
 ## 🚀 Quickstart
+```bash
 # Clone the repo
 git clone https://github.com/yourusername/adu-ecommerce-app.git
 cd adu-ecommerce-app
@@ -18,15 +30,7 @@ docker build -t adu-ecommerce-app .
 # Run container
 docker run -p 80:80 adu-ecommerce-app
 
-## 🗂️ Project Structure
-adu-ecommerce-app/
-│── app.py              # Flask app entry point
-│── requirements.txt    # Dependencies
-│── Dockerfile          # Container setup
-│── templates/
-│   └── index.html      # Subscription form template
-│── static/
-│   └── style.css       # Styling
+
 
 ## 🛠️ Tech Stack
 - Flask → lightweight Python web framework
