@@ -16,7 +16,7 @@ adu-ecommerce-app/
 │   └── index.html      # Subscription form template
 │── static/
 │   └── style.css       # Styling
-
+```
 ## 🚀 Quickstart
 ```bash
 # Clone the repo
