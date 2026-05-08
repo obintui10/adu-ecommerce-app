@@ -77,7 +77,8 @@ adu-ecommerce-app/
 - Deploy to cloud (AWS/Azure) with CI/CD.
 ```
 
-## 📐 Mermaid diagram code
+## 🗂 Architecture Diagram
+
 ```mermaid
 flowchart TD
     A[Browser (User submits subscription)] --> B[Flask App (app.py)]
