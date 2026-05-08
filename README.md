@@ -59,9 +59,7 @@ adu-ecommerce-app/
 +-------------------+
 
 ```
-
 ## 🗂 Mermaid Diagram
-
 ```mermaid
 flowchart TD
     A[Browser (User submits subscription)] --> B[Flask App (app.py)]
@@ -72,4 +70,5 @@ flowchart TD
 
     class B flask
     class C db
+
 
