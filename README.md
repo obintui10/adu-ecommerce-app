@@ -1,10 +1,11 @@
 🛒 ADU E‑Commerce App
 A simple Flask + MongoDB Atlas application that allows users to subscribe with their name and email. Built with containerization in mind using Docker, and structured for scalability and recruiter visibility.
 
-https://img.shields.io/badge/python-3.11-blue  
-https://img.shields.io/badge/flask-3.0.0-lightgrey  
-https://img.shields.io/badge/mongoDB-Atlas-green  
-https://img.shields.io/badge/docker-ready-blue
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![Flask](https://img.shields.io/badge/flask-3.0.0-lightgrey)
+![MongoDB Atlas](https://img.shields.io/badge/mongoDB-Atlas-green)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+
 
 ## 🚀 Quickstart
 # Clone the repo
