@@ -1,18 +1,26 @@
-<<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subscribe</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>my new application</h1>
-    {% if message %}
-        <p style="color: green; font-weight: bold;">{{ message }}</p>
-    {% endif %}
-    <form method="POST">
-        <input type="text" name="name" placeholder="Your Name" required><br><br>
-        <input type="email" name="email" placeholder="Your Email" required><br><br>
-        <button type="submit">Subscribe</button>
-    </form>
+    <div class="container">
+        <h1>My New Application</h1>
+        {% if message %}
+            <p class="success-message">{{ message }}</p>
+        {% endif %}
+        <form method="POST">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" placeholder="Your Name" required><br><br>
+            
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="Your Email" required><br><br>
+            
+            <button type="submit" class="btn-primary">Subscribe</button>
+        </form>
+    </div>
 </body>
 </html>
