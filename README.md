@@ -83,7 +83,7 @@ docker run -p 80:80 adu-ecommerce-app
 ## 🗂 Architecture Diagram
 
 ```mermaid
-graph TD
+flowchart TD
     A[Browser (User submits subscription)] --> B[Flask App (app.py)]
     B --> C[MongoDB Atlas (subscribers collection)]
 
