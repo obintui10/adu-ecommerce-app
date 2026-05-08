@@ -34,7 +34,7 @@ adu-ecommerce-app/
 - PyMongo → Python driver for MongoDB
 - Docker → containerized deployment
 - Gunicorn → production WSGI server
-
+```
  ## 📐 Box‑Style ASCII Architecture Diagram
  +-------------------+
 |     Browser       |
