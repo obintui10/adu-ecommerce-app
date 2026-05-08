@@ -19,7 +19,7 @@ docker build -t adu-ecommerce-app .
 docker run -p 80:80 adu-ecommerce-app
 
 ## 🗂️ Project Structure
-``bash
+```bash
 adu-ecommerce-app/
 │── app.py              # Flask app entry point
 │── requirements.txt    # Dependencies
