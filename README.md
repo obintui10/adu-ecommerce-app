@@ -29,7 +29,6 @@ docker build -t adu-ecommerce-app .
 # Run container
 docker run -p 80:80 adu-ecommerce-app
 
-
  ## 📐 Architecture Diagram
 ``bash
  +-------------------+
@@ -58,6 +57,21 @@ docker run -p 80:80 adu-ecommerce-app
 | - Stores email    |
 | - Prevents dupes  |
 +-------------------+
+
+```
+  ## 🛠️ Tech Stack
+- Flask → lightweight Python web framework
+- MongoDB Atlas → cloud database for subscriber storage
+- PyMongo → Python driver for MongoDB
+- Docker → containerized deployment
+- Gunicorn → production WSGI server
+
+##  🔄 Workflow
+- User enters name + email in form.
+- Flask validates and checks duplicates.
+- If new, inserts into MongoDB Atlas.
+- Success or error message displayed.
+
 ```
 
 ## 🗂 Mermaid Diagram
@@ -80,15 +94,3 @@ flowchart TD
 - Add unit tests with Pytest.
 - Deploy to cloud (AWS/Azure) with CI/CD.
 
-  ## 🛠️ Tech Stack
-- Flask → lightweight Python web framework
-- MongoDB Atlas → cloud database for subscriber storage
-- PyMongo → Python driver for MongoDB
-- Docker → containerized deployment
-- Gunicorn → production WSGI server
-
-##  🔄 Workflow
-- User enters name + email in form.
-- Flask validates and checks duplicates.
-- If new, inserts into MongoDB Atlas.
-- Success or error message displayed.
