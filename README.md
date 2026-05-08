@@ -35,7 +35,7 @@ docker run -p 80:80 adu-ecommerce-app
 - PyMongo → Python driver for MongoDB
 - Docker → containerized deployment
 - Gunicorn → production WSGI server
-
+```
 ##  🔄 Workflow
 - User enters name + email in form.
 - Flask validates and checks duplicates.
