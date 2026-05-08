@@ -1,4 +1,4 @@
-🛒 ADU E‑Commerce App
+## 🛒 ADU E‑Commerce App
 A simple Flask + MongoDB Atlas application that allows users to subscribe with their name and email. Built with containerization in mind using Docker, and structured for scalability and recruiter visibility.
 
 ![Python](https://img.shields.io/badge/python-3.11-blue)
